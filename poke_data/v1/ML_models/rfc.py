@@ -1,21 +1,12 @@
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-<<<<<<< HEAD
-<<<<<<< HEAD
 from src.v1.poke_testing import get_two_pokemon
 import pandas as pd
-=======
 from sklearn.metrics import accuracy_score
-from src.poke_testing import get_two_pokemon
+from src.v1.poke_testing import get_two_pokemon
 import pandas as pd
 import numpy as np
 
-
->>>>>>> main
-=======
-from src.v1.poke_testing import get_two_pokemon
-import pandas as pd
->>>>>>> 08696da4a81a5af36dea30711ca4031fe2ba46a1
 
 df = pd.read_csv("../../../data/v1/battle_data.csv")
 
@@ -31,7 +22,12 @@ predict_against_testset = model.predict(X_test)
 
 pokemons_to_battle = get_two_pokemon(150, 4)
 predict_two_pokemon = model.predict(pokemons_to_battle)
+score = model.score(X_test, y_test)
+
 
 
 if __name__ == "__main__":
-    print(predict_two_pokemon)
+    print("original", score)
+    battle = get_two_pokemon(490, 9)
+    predict_battle = model.predict(battle)
+    print(predict_battle)
